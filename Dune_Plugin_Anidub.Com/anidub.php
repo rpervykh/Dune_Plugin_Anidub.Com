@@ -171,17 +171,17 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 
     private function get_quality_array($cfg)
     {
-        // 240, 360, 480, 720 Рё 1080
+        // 240, 360, 480, 720 и 1080
         $vquality = array();
         if ($cfg === true)
-            $vquality[0] = '240 (РњРёРЅРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅРѕРµ)';
+            $vquality[0] = '240 (Минимально возможное)';
         else
             $vquality[0] = '240';
         $vquality[1] = '360';
         $vquality[2] = '480';
         $vquality[3] = '720';
         if ($cfg === true)
-            $vquality[4] = '1080 (РњР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅРѕРµ)';
+            $vquality[4] = '1080 (Максимально возможное)';
         else
             $vquality[4] = '1080';
 
@@ -193,7 +193,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $add_play_action = UserInputHandlerRegistry::create_action(
                         $this, 'play_item');
         $add_play_action['caption'] = (
-                is_interface_language_russian_or_similar() ? 'Р’РѕСЃРїСЂРѕРёР·РІРµСЃС‚Рё' : "Play"
+                is_interface_language_russian_or_similar() ? 'Воспроизвести' : "Play"
                 );
 
         return $add_play_action;
@@ -205,22 +205,22 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $add_fav_action = UserInputHandlerRegistry::create_action(
                         $this, 'add_favorite');
         $add_fav_action['caption'] = (
-                is_interface_language_russian_or_similar() ? 'Р”РѕР±Р°РІРёС‚СЊ РІ Р�Р·Р±СЂР°РЅРЅРѕРµ' : "Add Favorite"
+                is_interface_language_russian_or_similar() ? 'Добавить в Избранное' : "Add Favorite"
                 );
 
         $switch_view = UserInputHandlerRegistry::create_action(
                         $this, 'switch_view');
         $switch_view['caption'] = (
-                is_interface_language_russian_or_similar() ? "Р’РёРґ" : 'View mode'
+                is_interface_language_russian_or_similar() ? "Вид" : 'View mode'
                 );
         $view_info = UserInputHandlerRegistry::create_action(
                         $this, 'ex_view_info');
         $view_info['caption'] = (
-                is_interface_language_russian_or_similar() ? "Р�РЅС„Рѕ" : 'Info'
+                is_interface_language_russian_or_similar() ? "Инфо" : 'Info'
                 );
 		$search_view = UserInputHandlerRegistry::create_action(
                         $this, 'do_search_menu');
-        $search_view['caption'] = (is_interface_language_russian_or_similar() ? "РџРѕРёСЃРє" : 'Search');
+        $search_view['caption'] = (is_interface_language_russian_or_similar() ? "Поиск" : 'Search');
 		
         $skip_details = isset($plugin_cookies->skip_details) ? $plugin_cookies->skip_details : 'no';
 
@@ -258,22 +258,22 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $perform_search_action = UserInputHandlerRegistry::create_action(
                         $this, 'perform_search');
         $perform_search_action['caption'] = (
-                is_interface_language_russian_or_similar() ? 'Р’С‹РїРѕР»РЅРёС‚СЊ РїРѕРёСЃРє' : "Perform Search"
+                is_interface_language_russian_or_similar() ? 'Выполнить поиск' : "Perform Search"
                 );
         $add_search_action = UserInputHandlerRegistry::create_action(
                         $this, 'add_search');
         $add_search_action['caption'] = (
-                is_interface_language_russian_or_similar() ? 'Р”РѕР±Р°РІРёС‚СЊ РїРѕРёСЃРє' : "Add Search"
+                is_interface_language_russian_or_similar() ? 'Добавить поиск' : "Add Search"
                 );
         $remove_search_action = UserInputHandlerRegistry::create_action(
                         $this, 'remove_search');
         $remove_search_action['caption'] = (
-                is_interface_language_russian_or_similar() ? "РЈРґР°Р»РёС‚СЊ" : 'Remove'
+                is_interface_language_russian_or_similar() ? "Удалить" : 'Remove'
                 );
         $move_search_top_action = UserInputHandlerRegistry::create_action(
                         $this, 'move_search_top');
         $move_search_top_action['caption'] = (
-                is_interface_language_russian_or_similar() ? "РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІРІРµСЂС…" : 'Move to top'
+                is_interface_language_russian_or_similar() ? "Переместить вверх" : 'Move to top'
                 );
         $menu_items[] = array(
             GuiMenuItemDef::caption => $move_search_top_action['caption'],
@@ -299,22 +299,22 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $remove_fav_action = UserInputHandlerRegistry::create_action(
                         $this, 'remove_fav');
         $remove_fav_action['caption'] = (
-                is_interface_language_russian_or_similar() ? "РЈРґР°Р»РёС‚СЊ" : 'Remove'
+                is_interface_language_russian_or_similar() ? "Удалить" : 'Remove'
                 );
         $move_fav_top_action = UserInputHandlerRegistry::create_action(
                         $this, 'move_fav_top');
         $move_fav_top_action['caption'] = (
-                is_interface_language_russian_or_similar() ? "РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІРІРµСЂС…" : 'Move to top'
+                is_interface_language_russian_or_similar() ? "Переместить вверх" : 'Move to top'
                 );
         $switch_view = UserInputHandlerRegistry::create_action(
                         $this, 'switch_view');
         $switch_view['caption'] = (
-                is_interface_language_russian_or_similar() ? "Р’РёРґ" : 'View mode'
+                is_interface_language_russian_or_similar() ? "Вид" : 'View mode'
                 );
         $view_info = UserInputHandlerRegistry::create_action(
                         $this, 'ex_view_info');
         $view_info['caption'] = (
-                is_interface_language_russian_or_similar() ? "Р�РЅС„Рѕ" : 'Info'
+                is_interface_language_russian_or_similar() ? "Инфо" : 'Info'
                 );
        $menu_items[] = array(
             GuiMenuItemDef::caption => $move_fav_top_action['caption'],
@@ -363,18 +363,18 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
     public function get_main_menu_action_map($media_url, &$plugin_cookies)
     {
 		$ver = file_get_contents(dirname(__FILE__).'/VERSION');
-		$ver = str_replace("п»їversion=", "", $ver);
+		$ver = str_replace("﻿version=", "", $ver);
 		$ver = str_replace('date=', "[", $ver);
 		$ver = str_replace(" 00:00", "]", $ver);
 		$ver = str_replace("\n", " ", $ver);
 		
 		$setup_view = UserInputHandlerRegistry::create_action(
                         $this, 'setup');
-        $setup_view['caption'] = (is_interface_language_russian_or_similar() ? "РќР°СЃС‚СЂРѕР№РєРё" : 'Settings');
+        $setup_view['caption'] = (is_interface_language_russian_or_similar() ? "Настройки" : 'Settings');
 		
 		$info_release = UserInputHandlerRegistry::create_action(
                         $this, 'info_release');
-        $info_release['caption'] = (is_interface_language_russian_or_similar() ? "Р�Р·РјРµРЅРµРЅРёСЏ РІ v$ver" : 'Info Release');
+        $info_release['caption'] = (is_interface_language_russian_or_similar() ? "Изменения в v$ver" : 'Info Release');
 
         return array
             (
@@ -449,7 +449,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     $defs = $this->do_get_search_defs($plugin_cookies);
 
                     return ActionFactory::show_dialog(
-                            (is_interface_language_russian_or_similar() ? 'РџРѕРёСЃРє' : 'Search'),
+                            (is_interface_language_russian_or_similar() ? 'Поиск' : 'Search'),
                             $defs);
                     
                     break;
@@ -480,7 +480,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 						}
 						ControlFactory::add_custom_close_dialog_and_apply_buffon($defs, 'setup', 'Ok', 150,  $post_action);
 
-						return ActionFactory::show_dialog('Р�РЅС„РѕСЂРјР°С†РёСЏ РѕР± РёР·РјРµРЅРµРЅРёСЏС….', $defs);
+						return ActionFactory::show_dialog('Информация об изменениях.', $defs);
                     break;
 				case 'setup':
                     return ActionFactory::open_folder('setup');
@@ -565,14 +565,14 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 case 'add_fav_complite':
                     return ActionFactory::show_title_dialog(
                         (
-                            is_interface_language_russian_or_similar() ? 'Р’РёРґРµРѕ РґРѕР±Р°РІР»РµРЅРѕ РІ РёР·Р±СЂР°РЅРЅРѕРµ' : "Video has been added to favorites"
+                            is_interface_language_russian_or_similar() ? 'Видео добавлено в избранное' : "Video has been added to favorites"
                         )
                     );
                     break;
                  case 'del_fav_complite':
                     return ActionFactory::show_title_dialog(
                         (
-                            is_interface_language_russian_or_similar() ? 'Р’РёРґРµРѕ Р±С‹Р»Рѕ СѓРґР°Р»РµРЅРѕ РёР· РёР·Р±СЂР°РЅРЅРѕРіРѕ' : "Video has been deleted from favorites"
+                            is_interface_language_russian_or_similar() ? 'Видео было удалено из избранного' : "Video has been deleted from favorites"
                         )
                     );
                     break;
@@ -619,19 +619,19 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                         }
                         else
                         {
-                            return ActionFactory::show_title_dialog('Р’РёРґРµРѕ РґРѕР±Р°РІР»РµРЅРѕ РІ РёР·Р±СЂР°РЅРЅРѕРµ');
+                            return ActionFactory::show_title_dialog('Видео добавлено в избранное');
                         }
                     }
                     else
                     {
-                        return ActionFactory::show_title_dialog('Р’РёРґРµРѕ СѓР¶Рµ РІ РёР·Р±СЂР°РЅРЅРѕРј');
+                        return ActionFactory::show_title_dialog('Видео уже в избранном');
                     }
                     break;
                 case 'remove_fav':
                     if (!isset($user_input->selected_media_url))
                         return null;
                     if ($this->fav_build_in_progess)
-                        return ActionFactory::show_title_dialog('РџРѕРґРѕР¶РґРёС‚Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ СЃРїРёСЃРєР°!');
+                        return ActionFactory::show_title_dialog('Подождите окончания построения списка!');
                         
                     if ($user_input->selected_media_url === 'right_button')
                         HD::decode_user_data($user_input->parent_media_url, $media_str, $user_data);
@@ -674,7 +674,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     if (!isset($user_input->selected_media_url))
                         return null;
                     if ($this->fav_build_in_progess)
-                        return ActionFactory::show_title_dialog('РџРѕРґРѕР¶РґРёС‚Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ СЃРїРёСЃРєР°!');
+                        return ActionFactory::show_title_dialog('Подождите окончания построения списка!');
                     HD::decode_user_data($user_input->selected_media_url, $media_str, $user_data);
                     $video_id = $user_data->video_id;
                     $fav_items = isset($plugin_cookies->fav_items) ? $plugin_cookies->fav_items : '';
@@ -850,15 +850,15 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $vquality = $this->get_quality_array(true);
         
 		$ver = file_get_contents(dirname(__FILE__).'/VERSION');
-		$ver = str_replace("п»їversion=", "", $ver);
+		$ver = str_replace("﻿version=", "", $ver);
 		$ver = str_replace('date=', "[", $ver);
 		$ver = str_replace(" 00:00", "]", $ver);
 		$ver = str_replace("\n", " ", $ver);
 		
         $show_ops = array();
         if (is_interface_language_russian_or_similar ()) {
-            $show_ops['yes'] = 'Р”Р°';
-            $show_ops['no'] = 'РќРµС‚';
+            $show_ops['yes'] = 'Да';
+            $show_ops['no'] = 'Нет';
         } else {
             $show_ops['yes'] = 'Yes';
             $show_ops['no'] = 'No';
@@ -868,61 +868,61 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         (
             $defs,
             'info_release',
-            "Р’РµСЂСЃРёСЏ: $ver",
-            'Р�РЅС„РѕСЂРјР°С†РёСЏ РѕР± РёР·РјРµРЅРµРЅРёСЏС…',
+            "Версия: $ver",
+            'Информация об изменениях',
             0
         );
         
         $this->add_combobox($defs,
                 'show_main_icon',
-                'РџРѕРєР°Р·С‹РІР°С‚СЊ РёРєРѕРЅРєСѓ РІ РіР»Р°РІРЅРѕРј РјРµРЅСЋ:',
+                'Показывать иконку в главном меню:',
                 $main_icon, $show_ops, 0, true
         );
 
         $this->add_combobox($defs,
                 'video_quality',
-                'РљР°С‡РµСЃС‚РІРѕ РІРёРґРµРѕ:',
+                'Качество видео:',
                 $video_quality, $vquality, 0, true
         );
         
 	    $this->add_combobox($defs,
         	       'use_osk',
-                'Р�СЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌРєСЂР°РЅРЅСѓСЋ РєР»Р°РІРёР°С‚СѓСЂСѓ РІ РїРѕРёСЃРєРµ:',
+                'Использовать экранную клавиатуру в поиске:',
                 $use_osk, $show_ops, 0, true
             );
 		$this->add_combobox($defs,
                 'skip_details',
-                'РџСЂРѕРїСѓСЃРєР°С‚СЊ РѕРїРёСЃР°РЅРёРµ С„РёР»СЊРјР°:',
+                'Пропускать описание фильма:',
                 $skip_details, $show_ops, 0, true
         );
         $show_buf_time_ops = array();
         
-        $show_buf_time_ops[0] = 'РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ';
-        $show_buf_time_ops[500] = '0.5 СЃ';
-        $show_buf_time_ops[1000] = '1 СЃ';
-        $show_buf_time_ops[2000] = '2 СЃ';
-        $show_buf_time_ops[3000] = '3 СЃ';
-        $show_buf_time_ops[5000] = '5 СЃ';
-        $show_buf_time_ops[10000] = '10 СЃ';
+        $show_buf_time_ops[0] = 'По умолчанию';
+        $show_buf_time_ops[500] = '0.5 с';
+        $show_buf_time_ops[1000] = '1 с';
+        $show_buf_time_ops[2000] = '2 с';
+        $show_buf_time_ops[3000] = '3 с';
+        $show_buf_time_ops[5000] = '5 с';
+        $show_buf_time_ops[10000] = '10 с';
 
         $this->add_combobox
         (
             $defs,
             'buf_time',
-            'Р’СЂРµРјСЏ Р±СѓС„РµСЂРёР·Р°С†РёРё:',
+            'Время буферизации:',
             $buf_time, $show_buf_time_ops, 0, true
         );
  /*       $skin_ops = array();
 
-        $skin_ops['default'] = 'РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ';
-        $skin_ops['juniperus'] = 'РћС‚ Juniperus (РџРёСЂР°С‚СЃРєР°СЏ С‚РµРјР°)';
+        $skin_ops['default'] = 'По умолчанию';
+        $skin_ops['juniperus'] = 'От Juniperus (Пиратская тема)';
 
         $skin = isset($plugin_cookies->skin) ? $plugin_cookies->skin : 'default';
         $this->add_combobox
         (
             $defs,
             'skin',
-            'РћС„РѕСЂРјР»РµРЅРёРµ (С‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµР·Р°РіСЂСѓР·РєР°):',
+            'Оформление (требуется перезагрузка):',
             $skin, $skin_ops, 0, true
         );
 */
@@ -931,7 +931,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
             $defs,
             'restart',
             '',
-            'РџРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ РїР»РµРµСЂ',
+            'Перезагрузить плеер',
             0
         );
 
@@ -958,10 +958,10 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $do_new_search_action = UserInputHandlerRegistry::create_action($this, 'do_new_search');
 
         ControlFactory::add_custom_close_dialog_and_apply_buffon($defs,'apply_subscription',
-                (is_interface_language_russian_or_similar() ? 'Р�СЃРєР°С‚СЊ' : 'Search'),
+                (is_interface_language_russian_or_similar() ? 'Искать' : 'Search'),
                 300, $do_new_search_action);
         ControlFactory::add_close_dialog_button($defs,
-                'РћС‚РјРµРЅР°', 300);
+                'Отмена', 300);
 
         return $defs;
     }
@@ -1207,7 +1207,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     $add_action = UserInputHandlerRegistry::create_action(
                                 $this, 'mark_viewed');
                     $add_action['caption'] = (
-                                is_interface_language_russian_or_similar() ? 'РџСЂРѕСЃРјРѕС‚СЂРµРЅРѕ' : "Mark as viewed"
+                                is_interface_language_russian_or_similar() ? 'Просмотрено' : "Mark as viewed"
                             );
                 $actions = array
                     (
@@ -1294,7 +1294,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 $right_button_action = UserInputHandlerRegistry::create_action(
                             $this, 'remove_fav');
                 $right_button_action['caption'] = (
-                            is_interface_language_russian_or_similar() ? "РЈРґР°Р»РёС‚СЊ РёР· Р�Р·Р±СЂР°РЅРЅРѕРіРѕ" : 'Remove from Favorites'
+                            is_interface_language_russian_or_similar() ? "Удалить из Избранного" : 'Remove from Favorites'
                         );
             }
             else
@@ -1302,7 +1302,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 $right_button_action = UserInputHandlerRegistry::create_action(
                             $this, 'add_favorite');
                 $right_button_action['caption'] = (
-                            is_interface_language_russian_or_similar() ? 'Р”РѕР±Р°РІРёС‚СЊ РІ Р�Р·Р±СЂР°РЅРЅРѕРµ' : "Add Favorite"
+                            is_interface_language_russian_or_similar() ? 'Добавить в Избранное' : "Add Favorite"
                         );
             }
 
@@ -1348,7 +1348,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     $add_action = UserInputHandlerRegistry::create_action(
                                 $this, 'mark_viewed');
                     $add_action['caption'] = (
-                                is_interface_language_russian_or_similar() ? 'РџСЂРѕСЃРјРѕС‚СЂРµРЅРѕ' : "Mark as viewed"
+                                is_interface_language_russian_or_similar() ? 'Просмотрено' : "Mark as viewed"
                             );
                 $actions = array
                     (
@@ -1482,7 +1482,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		////////hd_print("doc: --->>>$doc");
 		$tmp = strstr($doc, "<div id='dle-content'>");
         $info_block = strstr($tmp, '<div class="related">', true);
-		$info_block = str_replace('&laquo;', 'В«', $info_block);
+		$info_block = str_replace('&laquo;', '«', $info_block);
 		$info_block = str_replace('&ndash;', '-', $info_block);
 		$info_block = str_replace("vkontakte.ru", "vk.com", $info_block);
         //////hd_print("info_block: --->>>$info_block");
@@ -1501,7 +1501,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		
         // description
         $description = '';
-        $tmp = explode('РћРїРёСЃР°РЅРёРµ</b>:', $info_block);
+        $tmp = explode('Описание</b>:', $info_block);
         if (count($tmp) > 1)
 		{
             $tmp = strstr($tmp[1], '</div>', true);
@@ -1511,7 +1511,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $tmp = "";
         // year
         $year = '';
-        $tmp = explode('Р“РѕРґ:', $info_block);
+        $tmp = explode('Год:', $info_block);
         if (count($tmp) > 1)
             $year = str_remove_spec(strstr($tmp[1], '</span>', true));
 			$year = strip_tags($year);
@@ -1520,16 +1520,16 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         
 		//name_original 
 		$name_original = '';
-        $tmp = explode('РџРµСЂРµРІРѕРґ:', $info_block);
+        $tmp = explode('Перевод:', $info_block);
         if (count($tmp) > 1)
             $name_original = str_remove_spec(strstr($tmp[1], '</span>', true));
 			$name_original = str_replace(' /', '', $name_original);
-			$name_original = 'РџРµСЂРµРІРѕРґ:' . (strip_tags($name_original));
+			$name_original = 'Перевод:' . (strip_tags($name_original));
         //// hd_print("name_original--->>> $name_original"); 		
 			
         // country
         $country = '';
-        $tmp = explode('РЎС‚СЂР°РЅР°:', $info_block);
+        $tmp = explode('Страна:', $info_block);
         if (count($tmp) > 1)
             $country = str_remove_spec(strstr($tmp[1], '</span>', true));
 			$country = strip_tags($country);
@@ -1537,12 +1537,12 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 			 
 		// genre
         $genre = '';
-        $tmp = explode("Р–Р°РЅСЂ:", $info_block);
+        $tmp = explode("Жанр:", $info_block);
         if (count($tmp) > 1)
             $genre = strstr($tmp[1], '</span>', true);
 			$genre = str_remove_spec($genre);
 			$genre = strip_tags($genre);
-			//$genre = str_replace("РїСЂРµРјСЊРµСЂР°", " РџСЂРµРјСЊРµСЂР°:", $genre);
+			//$genre = str_replace("премьера", " Премьера:", $genre);
         // hd_print("--->>> $genre");
 				
 		
@@ -1551,7 +1551,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
         $duration = '';
         // director
         $director = '';
-        $tmp = explode('Р РµР¶РёСЃСЃРµСЂ:', $info_block);
+        $tmp = explode('Режиссер:', $info_block);
         if (count($tmp) > 1)
             $director = str_remove_spec(strstr($tmp[1], '</span>', true));
 			$director = strip_tags($director);
@@ -1601,7 +1601,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		$doc = str_replace('<option  value="http://cdn', '', $doc);
         $tmp = strstr($doc, "<div id='dle-content'>");
         $info_block = strstr($tmp, '<div class="related">', true);
-		$info_block = str_replace('&laquo;', 'В«', $info_block);
+		$info_block = str_replace('&laquo;', '«', $info_block);
 		$info_block = str_replace('&ndash;', '-', $info_block);
 		$info_block = str_replace("vkontakte.ru", "vk.com", $info_block);
 		
@@ -1626,7 +1626,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		
         // description
         $description = '';
-        $tmp = explode('РћРїРёСЃР°РЅРёРµ</b>:', $info_block);
+        $tmp = explode('Описание</b>:', $info_block);
         if (count($tmp) > 1)
 		{
             $tmp = strstr($tmp[1], '</div>', true);
@@ -1789,11 +1789,11 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
             if ($videos === false)
             {
                 //////////hd_print("--> get_regular_folder_items(): no more available.");
-                $caption = (is_interface_language_russian_or_similar() ? 'Р‘РѕР»СЊС€Рµ РЅРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ' : 'No more items found');
+                $caption = (is_interface_language_russian_or_similar() ? 'Больше ничего не найдено' : 'No more items found');
                 $m_url = 'dummy';
                 if (HD::has_attribute($user_data, 'fav'))
                 {
-                    $caption = (is_interface_language_russian_or_similar() ? 'HРµ РЅР°Р№РґРµРЅРѕ' : 'Not found');
+                    $caption = (is_interface_language_russian_or_similar() ? 'Hе найдено' : 'Not found');
                     $m_url = $media_url;
                 }
                 $more_items_available = 0;
@@ -1963,11 +1963,11 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
             if ($videos === false)
             {
                 //////////hd_print("--> get_regular_folder_items(): no more available.");
-                $caption = (is_interface_language_russian_or_similar() ? 'Р‘РѕР»СЊС€Рµ РЅРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ' : 'No more items found');
+                $caption = (is_interface_language_russian_or_similar() ? 'Больше ничего не найдено' : 'No more items found');
                 $m_url = 'dummy';
                 if (HD::has_attribute($user_data, 'fav'))
                 {
-                    $caption = (is_interface_language_russian_or_similar() ? 'HРµ РЅР°Р№РґРµРЅРѕ' : 'Not found');
+                    $caption = (is_interface_language_russian_or_similar() ? 'Hе найдено' : 'Not found');
                     $m_url = $media_url;
                 }
                 $more_items_available = 0;
@@ -2036,11 +2036,11 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
             if ($videos === false)
             {
 		        //////////hd_print("--> get_regular_folder_items(): no more available.");
-                $caption = (is_interface_language_russian_or_similar() ? 'Р‘РѕР»СЊС€Рµ РЅРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ' : 'No more items found');
+                $caption = (is_interface_language_russian_or_similar() ? 'Больше ничего не найдено' : 'No more items found');
                 $m_url = 'dummy';
                 if (HD::has_attribute($user_data, 'fav'))
                 {
-                    $caption = (is_interface_language_russian_or_similar() ? 'HРµ РЅР°Р№РґРµРЅРѕ' : 'Not found');
+                    $caption = (is_interface_language_russian_or_similar() ? 'Hе найдено' : 'Not found');
                     $m_url = $media_url;
                 }
 		        $more_items_available = 0;
@@ -2095,8 +2095,8 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 
                     if (is_interface_language_russian_or_similar())
                     {
-		                $genre_caption = 'Р–Р°РЅСЂ';
-                        $duration_caption = 'РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ';
+		                $genre_caption = 'Жанр';
+                        $duration_caption = 'Продолжительность';
                     }
                     else
                     {
@@ -2197,7 +2197,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     array(
                         PluginRegularFolderItem::media_url => 'dummy',
                         PluginRegularFolderItem::caption =>
-                            (is_interface_language_russian_or_similar() ? 'Р—Р°РіСЂСѓР·РєР°...' : 'Loading...'),
+                            (is_interface_language_russian_or_similar() ? 'Загрузка...' : 'Loading...'),
                         PluginRegularFolderItem::view_item_params => array(
                             ViewItemParams::icon_width => ($view_type == 1 ? 190 : ($view_type == 2 ? 150 : 50)),
                             ViewItemParams::icon_height => ($view_type == 1 ? 290 : ($view_type == 2 ? 150 : 50)),
@@ -2555,7 +2555,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                     array
                     (
                         PluginRegularFolderItem::caption =>
-                            (is_interface_language_russian_or_similar() ? 'Р—Р°РіСЂСѓР·РєР°...' : 'Loading...'),
+                            (is_interface_language_russian_or_similar() ? 'Загрузка...' : 'Loading...'),
                         PluginRegularFolderItem::view_item_params => array
                         (
                             ViewItemParams::item_layout => HALIGN_LEFT,
@@ -2593,7 +2593,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		
         // get list of categories
 		$doc = str_replace('http://anidub.su', '', $doc);
-        $tmp = explode('РђРЅРёРјРµ РїРѕ Р¶Р°РЅСЂР°Рј</span></b>', $doc);
+        $tmp = explode('Аниме по жанрам</span></b>', $doc);
         $main_menu_block = strstr($tmp[1], '</ul>', true);
 		
         ////hd_print("--->>> main_menu_block: $main_menu_block");
@@ -2606,13 +2606,13 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 
         $items = array();
     
-         // push 'РџРѕСЃР»РµРґРЅРёРµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ' category in to categories list
+         // push 'Последние поступления' category in to categories list
         array_push
         (
             $items,
             array
             (
-                PluginRegularFolderItem::caption => 'Р’СЃРµ Р°РЅРёРјРµ РїРѕ РґРѕР±Р°РІР»РµРЅРёСЋ',
+                PluginRegularFolderItem::caption => 'Все аниме по добавлению',
                 PluginRegularFolderItem::view_item_params => self::$catalog_vip,
                 PluginRegularFolderItem::media_url =>
                         HD::encode_user_data
@@ -2677,7 +2677,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		
         // get list of categories
 		$doc = str_replace('http://anidub.su', '', $doc);
-        $tmp = explode('РђРЅРёРјРµ РїРѕ РіРѕРґР°Рј</span></b>', $doc);
+        $tmp = explode('Аниме по годам</span></b>', $doc);
         $main_menu_block = strstr($tmp[1], '</ul>', true);
 		
         ////hd_print("--->>> main_menu_block: $main_menu_block");
@@ -2689,7 +2689,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 
         $items = array();
     
-         // push 'РџРѕСЃР»РµРґРЅРёРµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ' category in to categories list
+         // push 'Последние поступления' category in to categories list
 
         // iterate through categories
         foreach($videos as $video)
@@ -2741,7 +2741,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		;
         // get list of categories
 		$doc = str_replace('http://anidub.su', '', $doc);
-        $tmp = explode('РђРЅРёРјРµ РїРѕ РґР°Р±РµСЂР°Рј</span></b>', $doc);
+        $tmp = explode('Аниме по даберам</span></b>', $doc);
         $main_menu_block = strstr($tmp[1], '</ul>', true);
 		
         ////hd_print("--->>> main_menu_block: $main_menu_block");
@@ -2755,7 +2755,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 
         $items = array();
     
-         // push 'РџРѕСЃР»РµРґРЅРёРµ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ' category in to categories list
+         // push 'Последние поступления' category in to categories list
 
         // iterate through categories
         foreach($videos as $video)
@@ -2814,7 +2814,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 		    (
 			    array
 			    (
-				    PluginRegularFolderItem::caption => 'РђРЅРёРјРµ РїРѕ Р¶Р°РЅСЂР°Рј',
+				    PluginRegularFolderItem::caption => 'Аниме по жанрам',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/categories.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/categories_sel.png',
@@ -2828,7 +2828,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 ),
 				array
 			    (
-				    PluginRegularFolderItem::caption => 'РђРЅРёРјРµ РїРѕ РіРѕРґР°Рј',
+				    PluginRegularFolderItem::caption => 'Аниме по годам',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/categories2.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/categories2_sel.png',
@@ -2842,7 +2842,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 ),
 				array
 			    (
-				    PluginRegularFolderItem::caption => 'РђРЅРёРјРµ РїРѕ РґР°Р±РµСЂР°Рј',
+				    PluginRegularFolderItem::caption => 'Аниме по даберам',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/categories1.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/categories1_sel.png',
@@ -2857,7 +2857,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 				
 			    array
 			    (
-				    PluginRegularFolderItem::caption => 'РџРѕРёСЃРє',
+				    PluginRegularFolderItem::caption => 'Поиск',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/search.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/search_sel.png',
@@ -2871,7 +2871,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 ),
 			    array
 			    (
-				    PluginRegularFolderItem::caption => 'Р�Р·Р±СЂР°РЅРЅРѕРµ',
+				    PluginRegularFolderItem::caption => 'Избранное',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/favorites.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/favorites_sel.png',
@@ -2885,7 +2885,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 ),
 				array
 			    (
-				    PluginRegularFolderItem::caption => 'РќР°СЃС‚СЂРѕР№РєРё',
+				    PluginRegularFolderItem::caption => 'Настройки',
 				    PluginRegularFolderItem::view_item_params => array(
 				            ViewItemParams::icon_path => 'plugin_file://skins/default/icons/setup.png',
 							ViewItemParams::icon_sel_path => 'plugin_file://skins/default/icons/setup_sel.png',
@@ -2907,7 +2907,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
                 $items,
                 array
                 (
-                    PluginRegularFolderItem::caption => '[РќРѕРІС‹Р№ Р·Р°РїСЂРѕСЃ]',
+                    PluginRegularFolderItem::caption => '[Новый запрос]',
                     PluginRegularFolderItem::view_item_params => self::$catalog_vip,
                     PluginRegularFolderItem::media_url =>
                         HD::encode_user_data
@@ -2927,7 +2927,7 @@ class anidubPlugin extends DefaultDunePlugin implements UserInputHandler
 					    $items,
 					    array
 					    (
-						    PluginRegularFolderItem::caption => (is_interface_language_russian_or_similar() ? "РїРѕРёСЃРє: $item" : "search: $item"),
+						    PluginRegularFolderItem::caption => (is_interface_language_russian_or_similar() ? "поиск: $item" : "search: $item"),
 						    PluginRegularFolderItem::view_item_params => self::$catalog_vip,
 						    PluginRegularFolderItem::media_url =>
 							    HD::encode_user_data
